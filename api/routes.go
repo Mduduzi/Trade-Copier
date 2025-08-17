@@ -9,8 +9,9 @@ import (
 	"github.com/gorilla/mux"
 	firebase "firebase.google.com/go"
 	"your_module_path/api" // Import the api package for middleware and context functions
-	"your_module_path/firestore" // Import the firestore package
+	"trade-copier/firestore" // Import the firestore package
 	"your_module_path/models" // Replace with your actual module path
+	"trade-copier/api"
 )
 
 func SetupRouter() *mux.Router {
@@ -47,6 +48,10 @@ func linkAccountHandler(app *firebase.App) http.HandlerFunc {
 		return
 	}
 
+	if account.UserID == "" {
+		// Input validation (excluding UserID, as we get it from context)
+	}
+
 	if err := json.NewDecoder(r.Body).Decode(&account); err != nil {
 		http.Error(w, fmt.Sprintf("Invalid request payload: %v", err), http.StatusBadRequest)
 		return
@@ -65,7 +70,7 @@ func linkAccountHandler(app *firebase.App) http.HandlerFunc {
 	account.UserID = userID
 
 	// Save the account data to Firestore
-	accountID, err := firestore.SaveAccount(app, account)
+	accountID, err := firestore.SaveAccount(app, account) // Changed to use imported firestore
 	if err != nil {
 		// Log the error for debugging purposes
 		fmt.Printf("Error saving account to Firestore: %v\n", err)

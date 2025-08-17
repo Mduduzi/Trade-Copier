@@ -8,7 +8,7 @@ import (
 	firebase "firebase.google.com/go"
 	"google.golang.org/api/option"
 
-	"/api" // Assuming your api package is in a directory named 'api' at the project root
+	"trade-copier/api" // Assuming your api package is in a directory named 'api' at the project root
 )
 
 func main() {

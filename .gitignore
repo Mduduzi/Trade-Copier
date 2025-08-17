@@ -1,0 +1,37 @@
+gitignore
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*_test
+
+# Output of the go build command
+/dist/
+/build/
+/*.o
+/*.a
+
+# Dependency directories
+vendor/
+
+# Temporary files
+*~
+~*
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+
+# Firebase service account key (DO NOT commit this!)
+serviceAccountKey.json
+*.json # Be careful with this if you have other JSON files you DO want to commit
